@@ -2,9 +2,9 @@ import Button from '@mui/material/Button';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       teste
-      <Button>teste mui</Button>
+      <Button>button mui</Button>
     </div>
   );
 }
