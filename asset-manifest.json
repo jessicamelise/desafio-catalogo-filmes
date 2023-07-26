@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/desafio-catalogo-filmes/static/css/main.e6c13ad2.css",
+    "main.js": "/desafio-catalogo-filmes/static/js/main.916e5c5e.js",
+    "index.html": "/desafio-catalogo-filmes/index.html",
+    "main.e6c13ad2.css.map": "/desafio-catalogo-filmes/static/css/main.e6c13ad2.css.map",
+    "main.916e5c5e.js.map": "/desafio-catalogo-filmes/static/js/main.916e5c5e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.916e5c5e.js"
+  ]
+}
