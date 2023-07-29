@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Link, Route, RouterProvider, Routes, createBrowserRouter, createHashRouter } from 'react-router-dom';
+import { HashRouter, Link, Route, Routes } from 'react-router-dom';
 
 // function App() {
 //   const router = createBrowserRouter([
@@ -35,7 +35,6 @@ import { BrowserRouter, HashRouter, Link, Route, RouterProvider, Routes, createB
 
 export default function App() {
   return (
-    // <BrowserRouter>
       <HashRouter basename="/">
         <nav>
           <ul>
@@ -63,6 +62,5 @@ export default function App() {
           </Route>
         </Routes>
       </HashRouter>
-    // </BrowserRouter>
   );
 }
