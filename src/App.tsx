@@ -1,11 +1,29 @@
-import Button from '@mui/material/Button';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
+import Home from './pages/Home';
+import Films from './pages/Films';
+import FilmDetail from './pages/FilmDetail';
 
-function App() {
+const App = () => {
+  const router = createHashRouter(
+    [
+      {
+        element: <Home />,
+        path: '/',
+      },
+      {
+        element: <Films />,
+        path: '/films',
+      },
+      {
+        element: <FilmDetail />,
+        path: 'films/:filmId',
+      },
+    ], 
+    { basename: "/" }
+  );
+
   return (
-    <div>
-      teste
-      <Button>button mui</Button>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
