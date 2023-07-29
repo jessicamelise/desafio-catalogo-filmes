@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/desafio-catalogo-filmes/static/css/main.e6c13ad2.css",
-    "main.js": "/desafio-catalogo-filmes/static/js/main.6cafd4a5.js",
+    "main.css": "/desafio-catalogo-filmes/static/css/main.66dbe80b.css",
+    "main.js": "/desafio-catalogo-filmes/static/js/main.4b520bda.js",
+    "static/media/logo.svg": "/desafio-catalogo-filmes/static/media/logo.b16bad6694de902008faf278a82348d3.svg",
     "index.html": "/desafio-catalogo-filmes/index.html",
-    "main.e6c13ad2.css.map": "/desafio-catalogo-filmes/static/css/main.e6c13ad2.css.map",
-    "main.6cafd4a5.js.map": "/desafio-catalogo-filmes/static/js/main.6cafd4a5.js.map"
+    "main.66dbe80b.css.map": "/desafio-catalogo-filmes/static/css/main.66dbe80b.css.map",
+    "main.4b520bda.js.map": "/desafio-catalogo-filmes/static/js/main.4b520bda.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.6cafd4a5.js"
+    "static/css/main.66dbe80b.css",
+    "static/js/main.4b520bda.js"
   ]
 }
