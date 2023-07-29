@@ -35,7 +35,7 @@ import { BrowserRouter, HashRouter, Link, Route, RouterProvider, Routes, createB
 
 export default function App() {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
       <HashRouter basename="/">
         <nav>
           <ul>
@@ -63,6 +63,6 @@ export default function App() {
           </Route>
         </Routes>
       </HashRouter>
-    </BrowserRouter>
+    // </BrowserRouter>
   );
 }
