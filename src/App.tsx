@@ -1,66 +1,30 @@
-import { HashRouter, Link, Route, Routes } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
+import Home from './pages/Home';
+import Films from './pages/Films';
+import FilmDetail from './pages/FilmDetail';
 
-// function App() {
-//   const router = createBrowserRouter([
-//     {
-//         element: <Home />,
-//         children: [
-//             // {
-//             //     path: '/home',
-//             //     element: <Home />,
-//             // },
-//             {
-//                 path: '/:id',
-//                 element: <>detalhes</>,
-//             },
-//         ],
-//     },
-// ], { basename: "/desafio-catalogo-filmes" })
-  
-//   return (
-//     // <BrowserRouter>
-//     //     <Routes>
-//     //       <Route path="*/">
-//     //         <Redirect to={<Home />} />
-//     //       </Route>
-//     //       <Route path="*/home" element={<Home />} />
-//     //       <Route path="*/detail/:id" element={<>detalhes</>} />
-//     //     </Routes>
-//     // </BrowserRouter>
-//     <RouterProvider router={router} />
-//   );
-// }
+const App = () => {
+  const router = createHashRouter(
+    [
+      {
+        element: <Home />,
+        path: '/',
+      },
+      {
+        element: <Films />,
+        path: '/films',
+      },
+      {
+        element: <FilmDetail />,
+        path: 'films/:filmId',
+      },
+    ], 
+    { basename: "/" }
+  );
 
-// export default App;
-
-export default function App() {
   return (
-      <HashRouter basename="/">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Routes>
-          <Route path="/about">
-            <>teste sobre</>
-          </Route>
-          <Route path="/users">
-            <>teste usuario</>
-          </Route>
-          <Route path="/">
-            <>teste home</>
-          </Route>
-        </Routes>
-      </HashRouter>
+    <RouterProvider router={router} />
   );
 }
+
+export default App;
