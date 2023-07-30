@@ -1,17 +1,6 @@
-import { Box, Button, TextField, ThemeProvider, createTheme, useMediaQuery } from "@mui/material";
-import logo from '../assets/images/logo.svg';
+import { Box, Button, TextField, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#AA2321',
-    },
-    secondary: {
-      main: '#7B8C98',
-    },
-  },
-});
+import Logo from "../components/logo/Logo";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -47,7 +36,7 @@ const Home = () => {
   const routeChange = () =>{ 
     let path = `films`; 
     navigate(path);
-  }
+  };
   
   return (
     <Box 
@@ -57,42 +46,40 @@ const Home = () => {
       textAlign="center"
       sx={matches ? boxAttr.root.matches : boxAttr.root.notMatches}
     >
-      <Box sx={matches ? boxAttr.img.matches : boxAttr.img.notMatches}>
-        <Box component="img" src={logo} />
+      <Box alignSelf="center" sx={matches ? boxAttr.img.matches : boxAttr.img.notMatches}>
+        <Logo />
       </Box>
-      <ThemeProvider theme={theme}>
-        <Box
-          component="form"
-          display="flex"
-          flexDirection="column"
-          gap="10px"
-          sx={{
-            '& .MuiInputBase-colorPrimary': { background: 'white' },
-            ...matches ? boxAttr.form.matches : boxAttr.form.notMatches,
-          }}
-          >
-          <TextField
-            variant="outlined"
-            size="small"
-            placeholder="email"
-            value=""
-          />
-          <TextField 
-            variant="outlined"
-            size="small"
-            placeholder="password"
-            value=""
-          />
-          <Button 
-            variant="contained" 
-            size="small"
-            color="primary"
-            onClick={routeChange}
-          >
-            Log in
-          </Button>
-        </Box>
-      </ThemeProvider>
+      <Box
+        component="form"
+        display="flex"
+        flexDirection="column"
+        gap="10px"
+        sx={{
+          '& .MuiInputBase-colorPrimary': { background: 'white' },
+          ...matches ? boxAttr.form.matches : boxAttr.form.notMatches,
+        }}
+        >
+        <TextField
+          variant="outlined"
+          size="small"
+          placeholder="email"
+          value=""
+        />
+        <TextField 
+          variant="outlined"
+          size="small"
+          placeholder="password"
+          value=""
+        />
+        <Button 
+          variant="contained" 
+          size="small"
+          color="primary"
+          onClick={routeChange}
+        >
+          Log in
+        </Button>
+      </Box>
     </Box>    
   );
 }
