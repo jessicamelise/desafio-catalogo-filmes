@@ -2,7 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { Search } from "@mui/icons-material";
 import { Box, Button, InputAdornment, TextField, Typography } from "@mui/material";
 
-const Header = () => {
+interface HeaderProps {
+  handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClickSearch: () => void;
+  search: string;
+};
+
+const Header = (props: HeaderProps) => {
   const navigate = useNavigate();
   
   const routeChange = () =>{ 
@@ -32,11 +38,12 @@ const Header = () => {
           variant="outlined"
           size="small"
           placeholder="search movie..."
-          value=""
+          value={props.search}
+          onChange={props.handleChangeSearch}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Search />
+                <Search onClick={props.handleClickSearch} />
               </InputAdornment>
             ),
           }}
