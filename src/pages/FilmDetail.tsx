@@ -50,7 +50,7 @@ const FilmDetail = () => {
 
   useEffect(() => {
     getFilmById();
-  }, []);
+  }, []); // eslint-disable-line
   
   return (
     <>
