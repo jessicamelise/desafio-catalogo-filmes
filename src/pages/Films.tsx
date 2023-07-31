@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Search } from "@mui/icons-material";
-import { Box, Button, InputAdornment, TextField, Typography,  } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import logo from '../assets/images/logo.svg';
 import Logo from "../components/logo/Logo";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import Header from "../components/header/Header";
 
 const Films = () => {
   const navigate = useNavigate();
@@ -70,11 +70,11 @@ const Films = () => {
     setIsMouseEnter('');
   };
 
-  const routeChange = () =>{ 
-    const path = `/`; 
+  const routeChange = (id: string) => {
+    const path = `/films/${id}`; 
     navigate(path);
   };
-  
+
   return (
     <Box
       display="flex"
@@ -84,36 +84,7 @@ const Films = () => {
       flexDirection="column"
       gap="20px"
     >
-      <Box 
-        component="header" 
-        display="flex" 
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Typography>Hello /Nome/</Typography>
-        <Button variant="contained" onClick={routeChange}>Log out</Button>
-      </Box>
-      <Box
-        component="form"
-        sx={{
-          '& .MuiInputBase-colorPrimary': { background: 'white' },
-        }}
-      >
-        <TextField
-          fullWidth
-          variant="outlined"
-          size="small"
-          placeholder="search movie..."
-          value=""
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
+      <Header />
       {filmList.length > 0 ? (
         <Box display="inline-flex" flexWrap="wrap" width="100%" gap="10px">
           {filmList.map((film) => (
@@ -137,6 +108,7 @@ const Films = () => {
                 display="flex"
                 flexDirection="column"
                 justifyContent="space-between"
+                onClick={() => routeChange(film.id)}
               >
                 {isMouseEnter === film.id && (
                   <>
@@ -167,9 +139,8 @@ const Films = () => {
           <Typography variant="body2">Here's an offer you can't refuse</Typography>
         </Box>
       )}
-      
     </Box>    
   );
-}
+};
   
 export default Films;
