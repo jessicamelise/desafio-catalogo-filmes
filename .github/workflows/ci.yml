@@ -36,6 +36,9 @@ jobs:
 
     - name: Build
       run: npm run build
+      env:
+        REACT_APP_APIKey: ${{ secrets.REACT_APP_APIKey }}
+        REACT_APP_APIBaseURL: ${{ secrets.REACT_APP_APIBaseURL }}
 
     - name: Deploy
       run: |
