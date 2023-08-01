@@ -12,6 +12,9 @@ const theme = createTheme({
     secondary: {
       main: '#7B8C98',
     },
+    action: {
+      disabledBackground: 'rgba(170, 35, 33, 0.40)',
+    },
   },
   typography: {
     allVariants: {

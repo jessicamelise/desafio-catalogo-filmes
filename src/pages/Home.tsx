@@ -1,10 +1,20 @@
+import { useState } from "react";
 import { Box, Button, TextField, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/logo/Logo";
 
+interface FormLogin {
+  email: string;
+  password: string;
+};
+
 const Home = () => {
   const navigate = useNavigate();
   const matches = useMediaQuery('(min-width:800px)');
+  const [formLogin, setFormLogin] = useState<FormLogin>({
+    email: '',
+    password: '',
+  });
   const boxAttr = {
     root: {
       matches: {
@@ -37,6 +47,15 @@ const Home = () => {
     let path = `films`; 
     navigate(path);
   };
+
+  const handleChangeFormLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value: string = e.target.value;
+
+    setFormLogin({
+      ...formLogin,
+      [e.target.name]: value,
+    });
+  };
   
   return (
     <Box 
@@ -61,21 +80,26 @@ const Home = () => {
         >
         <TextField
           variant="outlined"
+          name="email"
           size="small"
           placeholder="email"
-          value=""
+          onChange={handleChangeFormLogin}
+          value={formLogin.email}
         />
         <TextField 
           variant="outlined"
+          name="password"
           size="small"
           placeholder="password"
-          value=""
+          onChange={handleChangeFormLogin}
+          value={formLogin.password}
         />
         <Button 
           variant="contained" 
           size="small"
           color="primary"
           onClick={routeChange}
+          disabled={!formLogin.email || !formLogin.password}
         >
           Log in
         </Button>
