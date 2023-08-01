@@ -1,46 +1,92 @@
-# Getting Started with Create React App
+<h1 align="center">Catalogo de Filmes</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Acesse em: [https://jessicamelise.github.io/desafio-catalogo-filmes/#/](https://jessicamelise.github.io/desafio-catalogo-filmes/#/)
 
-## Available Scripts
+A principio o email e password podem ser inseridos qualquer dado para testar a app.
 
-In the project directory, you can run:
+## Índice
 
-### `npm start`
+* [1. Desafio](#1-desafio)
+* [2. Montagem do ambiente de desenvolvimento](#2-montagem-do-ambiente-de-desenvolvimento)
+* [3. Implementações Futuras e Melhorias](#3-implementações-futuras-e-melhorias)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 1. Desafio
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+O desafio consistem em:
 
-### `npm test`
+- Utilizar a OMDb API, ou outra API de nossa preferência :heavy_check_mark:
+- Home page: Campo de busca e uma listagem de resultados. Pense na página também com os seguintes estados: vazia, com loading e quando um filme não é encontrado :heavy_check_mark:
+- Página do filme: Página de detalhes do filme. Pense também nos estados de loading e "filme não encontrado" :heavy_check_mark:
+- Não há layout de telas na versão mobile mas se você fizer sua aplicação responsiva será um ponto positivo :heavy_check_mark:
+- Seja fiel ao layout recebido e fique à vontade para fazer melhorias no layout (tela de login, header com logout, pipeline, deploy :heavy_check_mark:)
+- O projeto conta com muitos pontos de melhorias. Fique a vontade para sugerir. Isso contará pontos no quesito de arquitetura de projeto (sugestão na parte de melhorias :heavy_check_mark:)
+- Há um botão de "like" (coração) no detalhe do filme. Seria legal se essa informação fosse persistida :x:
+- Testes unitários contarão como ponto positivo :heavy_check_mark:
+- Readme :heavy_check_mark:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 3. Implementações Futuras e Melhorias
 
-### `npm run build`
+* Integração com o firebase para fazer o registro e login persistidos;
+* Utilizar o firebase também para setar os filmes favoritos persistidos (antes disso daria para utilizar um json server ou localStorage para armazenar esse dado persistido);
+* Aprimorar a listagem que atualmente só vem exibido o limit de 10 itens sem usar a paginação, então seria implemenstar essa paginação e mostrar mais itens que retornaram da request; 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 2. Montagem do ambiente de desenvolvimento
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> :warning: Será necessária a utilização:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [React JS](https://pt-br.reactjs.org/docs/getting-started.html).
 
-### `npm run eject`
+* [Node.js](https://nodejs.org/) que contém o [npm](https://docs.npmjs.com/) para instalação das dependências.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Faça o clone do projeto:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+``` sh
+git https://github.com/jessicamelise/desafio-catalogo-filmes.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Instale as dependências do projeto com o comando:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+``` sh
+npm install
+```
 
-## Learn More
+* .env Config
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  :warning: Para rodar o projeto local, será necessário um arquivo _**.env**_ na raiz do projeto contendo as informações da url base e apiKey para acessar a API:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+``` js
+REACT_APP_APIKey={token}
+REACT_APP_APIBaseURL={baseUrl}
+```
+
+* secrets Config no repositório
+  :warning: Caso tenha interesse em manter e evoluir seu projeto clonado, o mesmo tem um workflow configurado no gitlab actions que faz o deploy automático no gh pages e para ele funcionar será necessario setar as secrets abaixo no seu repositório:
+
+``` js
+ACTIONS_DEPLOY_ACCESS_TOKEN={token gerado no personal tokens aqui no github}
+REACT_APP_APIKEY={token}
+REACT_APP_APIBASEURL={baseUrl}
+USER_EMAIL={email}
+USER_NAME={name}
+```
+
+* Localhost:
+
+``` sh
+npm start
+```
+
+* Testes
+
+```sh
+npm run test
+```
+
+```sh
+npm run test -- --coverage .
+```
+
+* Deploy e Build
+
+Está automático pelo workflow do github actions
+[https://github.com/jessicamelise/desafio-catalogo-filmes/actions](https://github.com/jessicamelise/desafio-catalogo-filmes/actions)
