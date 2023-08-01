@@ -17,24 +17,36 @@ O desafio consistem em:
 - Utilizar a OMDb API, ou outra API de nossa preferência :heavy_check_mark:
 - Home page: Campo de busca e uma listagem de resultados. Pense na página também com os seguintes estados: vazia, com loading e quando um filme não é encontrado :heavy_check_mark:
 - Página do filme: Página de detalhes do filme. Pense também nos estados de loading e "filme não encontrado" :heavy_check_mark:
-- Não há layout de telas na versão mobile mas se você fizer sua aplicação responsiva será um ponto positivo :heavy_check_mark:
-- Seja fiel ao layout recebido e fique à vontade para fazer melhorias no layout (tela de login, header com logout, pipeline, deploy :heavy_check_mark:)
-- O projeto conta com muitos pontos de melhorias. Fique a vontade para sugerir. Isso contará pontos no quesito de arquitetura de projeto (sugestão na parte de melhorias :heavy_check_mark:)
+- Não há layout de telas na versão mobile mas se você fizer sua aplicação responsiva será um ponto positivo (desenvolvimento como mobile first) :heavy_check_mark:
+- Seja fiel ao layout recebido e fique à vontade para fazer melhorias no layout (melhorias aplicadad: tela de login, header com logout, pipeline, deploy :heavy_check_mark:)
+- O projeto conta com muitos pontos de melhorias. Fique a vontade para sugerir. Isso contará pontos no quesito de arquitetura de projeto (sugestão na parte de melhorias desse readme :heavy_check_mark:)
 - Há um botão de "like" (coração) no detalhe do filme. Seria legal se essa informação fosse persistida :x:
 - Testes unitários contarão como ponto positivo :heavy_check_mark:
 - Readme :heavy_check_mark:
+
+Mobile:
+
+![mobile](image-2.png)
+
+Desk:
+
+![desk](image-3.png)
 
 ## 3. Implementações Futuras e Melhorias
 
 * Integração com o firebase para fazer o registro e login persistidos;
 * Utilizar o firebase também para setar os filmes favoritos persistidos (antes disso daria para utilizar um json server ou localStorage para armazenar esse dado persistido);
-* Aprimorar a listagem que atualmente só vem exibido o limit de 10 itens sem usar a paginação, então seria implemenstar essa paginação e mostrar mais itens que retornaram da request; 
+* Aprimorar a listagem que atualmente só vem exibido o limit de 10 itens sem usar a paginação, então seria implemenstar essa paginação e mostrar mais itens que retornaram da request, o endpoint da api utilizada pelo que notei não trabalha com o limite, somente com o total de documentos e a página via query string;
+* Melhorar código (quebrar em mais componentes); 
+* Melhorar a cobertura de testes;
+
+![coverage](image.png)
 
 ## 2. Montagem do ambiente de desenvolvimento
 
 > :warning: Será necessária a utilização:
 
-* [React JS](https://pt-br.reactjs.org/docs/getting-started.html).
+Projeto desenvolvido com React.Js + TypeScript + Material UI
 
 * [Node.js](https://nodejs.org/) que contém o [npm](https://docs.npmjs.com/) para instalação das dependências.
 
