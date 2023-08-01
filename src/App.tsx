@@ -1,3 +1,4 @@
+import React from 'react';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Films from './pages/Films';
@@ -26,7 +27,7 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
+const App = (): React.ReactElement => {
   const router = createHashRouter(
     [
       {
@@ -42,7 +43,7 @@ const App = () => {
         path: 'films/:filmId',
       },
     ], 
-    { basename: "/" }
+    { basename: "/" },
   );
 
   return (
@@ -59,6 +60,6 @@ const App = () => {
       </ThemeProvider>
     </Box>
   );
-}
+};
 
 export default App;
