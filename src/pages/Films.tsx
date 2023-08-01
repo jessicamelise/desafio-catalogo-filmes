@@ -120,6 +120,7 @@ const Films = (): React.ReactElement => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <Box 
+                    data-testid={`${film.imdbID}-img`}
                     width="100%" 
                     height="100%" 
                     borderRadius="8px"
