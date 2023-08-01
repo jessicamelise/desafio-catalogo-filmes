@@ -26,11 +26,11 @@ O desafio consistem em:
 
 Mobile:
 
-![mobile](image-2.png)
+<img src="./src/assets/images/image-2.png" />
 
 Desk:
 
-![desk](image-3.png)
+<img src="./src/assets/images/image-3.png" />
 
 ## 3. Implementações Futuras e Melhorias
 
@@ -40,7 +40,7 @@ Desk:
 * Melhorar código (quebrar em mais componentes); 
 * Melhorar a cobertura de testes;
 
-![coverage](image.png)
+<img src="./src/assets/images/image.png" />
 
 ## 2. Montagem do ambiente de desenvolvimento
 
