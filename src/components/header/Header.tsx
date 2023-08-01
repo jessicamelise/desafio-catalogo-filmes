@@ -5,6 +5,7 @@ import { Box, Button, InputAdornment, TextField, Typography } from "@mui/materia
 interface HeaderProps {
   handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleClickSearch: () => void;
+  handleKeyDown: (e: React.KeyboardEvent) => void;
   search: string;
 };
 
@@ -24,7 +25,7 @@ const Header = (props: HeaderProps) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Typography>Hello /Nome/</Typography>
+        <Typography>Hello</Typography>
         <Button variant="contained" onClick={routeChange}>Log out</Button>
       </Box>
       <Box
@@ -40,9 +41,10 @@ const Header = (props: HeaderProps) => {
           placeholder="search movie..."
           value={props.search}
           onChange={props.handleChangeSearch}
+          onKeyDown={props.handleKeyDown}
           InputProps={{
             startAdornment: (
-              <InputAdornment position="start">
+              <InputAdornment position="start" sx={{ cursor: 'pointer' }}>
                 <Search onClick={props.handleClickSearch} />
               </InputAdornment>
             ),

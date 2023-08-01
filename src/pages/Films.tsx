@@ -51,6 +51,12 @@ const Films = () => {
     };
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      getSearchFilms();
+    };
+  };
+
   const handleMouseEnter = (id: string) => {
     setIsMouseEnter(id);
   };
@@ -76,6 +82,7 @@ const Films = () => {
       <Header 
         handleChangeSearch={handleChangeSearch}
         handleClickSearch={handleClickSearch}
+        handleKeyDown={handleKeyDown}
         search={search}
       />
       {loading && (
