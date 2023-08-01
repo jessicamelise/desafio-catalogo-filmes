@@ -1,15 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert, Box, Typography } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import logo from '../assets/images/logo.svg';
 import Logo from "../components/logo/Logo";
 import Header from "../components/header/Header";
-import { APIResponse, SearchFilmList, apiKey, baseURL } from "../api/omdbAPI/omdbAPI";
+import { apiKey, baseURL } from "../api/omdbAPI";
+import { SearchFilmList, APIResponse } from "../models/omdbAPI";
 
-const Films = () => {
-  const url = baseURL;
-  const key = apiKey;
+const Films = (): React.ReactElement => {
+  const url: string = baseURL;
+  const key: string = apiKey;
   const navigate = useNavigate();
   const [isMouseEnter, setIsMouseEnter] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -22,7 +23,7 @@ const Films = () => {
     },
   };
 
-  const getSearchFilms = async () => {
+  const getSearchFilms = async (): Promise<void> => {
     if (search) {
       setLoading(true);
       try {
@@ -36,14 +37,14 @@ const Films = () => {
       } finally {
         setLoading(false);
       };
-    }
+    };
   };
 
-  const handleClickSearch = () => {
+  const handleClickSearch = (): void => {
     getSearchFilms();
   };
 
-  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value);
     if (e.target.value === '') {
       setError(null);
@@ -51,21 +52,21 @@ const Films = () => {
     };
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent): void => {
     if (e.key === 'Enter') {
       getSearchFilms();
     };
   };
 
-  const handleMouseEnter = (id: string) => {
+  const handleMouseEnter = (id: string): void => {
     setIsMouseEnter(id);
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (): void => {
     setIsMouseEnter('');
   };
 
-  const routeChange = (id: string) => {
+  const routeChange = (id: string): void => {
     const path = `/films/${id}`; 
     navigate(path);
   };

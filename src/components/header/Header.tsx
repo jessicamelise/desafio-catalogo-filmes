@@ -1,13 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Search } from "@mui/icons-material";
 import { Box, Button, InputAdornment, TextField, Typography } from "@mui/material";
-
-interface HeaderProps {
-  handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleClickSearch: () => void;
-  handleKeyDown: (e: React.KeyboardEvent) => void;
-  search: string;
-};
+import { HeaderProps } from "../../models/header";
 
 const Header = (props: HeaderProps) => {
   const navigate = useNavigate();

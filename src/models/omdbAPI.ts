@@ -1,6 +1,3 @@
-export const apiKey = process.env.REACT_APP_APIKey
-export const baseURL = process.env.REACT_APP_APIBaseURL
-
 export interface APIResponse<T> {
   Search: T;
   status: number;
@@ -47,3 +44,4 @@ export interface FilmRatingList {
   Source: string;
   Value: string;
 };
+  

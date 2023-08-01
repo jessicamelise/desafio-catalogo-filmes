@@ -1,14 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Box, Button, TextField, useMediaQuery } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/logo/Logo";
+import { FormLogin } from "../models/home";
 
-interface FormLogin {
-  email: string;
-  password: string;
-};
-
-const Home = () => {
+const Home = (): React.ReactElement => {
   const navigate = useNavigate();
   const matches = useMediaQuery('(min-width:800px)');
   const [formLogin, setFormLogin] = useState<FormLogin>({
@@ -43,12 +39,12 @@ const Home = () => {
     },
   };
 
-  const routeChange = () =>{ 
+  const routeChange = (): void => { 
     let path = `films`; 
     navigate(path);
   };
 
-  const handleChangeFormLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeFormLogin = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value: string = e.target.value;
 
     setFormLogin({
@@ -106,6 +102,6 @@ const Home = () => {
       </Box>
     </Box>    
   );
-}
+};
   
 export default Home;

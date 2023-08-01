@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Alert, Box, Chip, Typography, useMediaQuery } from "@mui/material";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -5,12 +6,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CircleIcon from '@mui/icons-material/Circle';
 import imdb from '../assets/images/imdb.svg';
 import rotten from '../assets/images/rotten.svg';
-import { FilmByIdResponse, apiKey, baseURL } from "../api/omdbAPI/omdbAPI";
-import { useEffect, useState } from "react";
+import { apiKey, baseURL } from "../api/omdbAPI";
+import { FilmByIdResponse } from "../models/omdbAPI";
 
-const FilmDetail = () => {
-  const url = baseURL;
-  const key = apiKey;
+const FilmDetail = (): React.ReactElement => {
+  const url: string = baseURL;
+  const key: string = apiKey;
   const [film, setFilm] = useState<FilmByIdResponse>({} as FilmByIdResponse);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean | null>(null);
@@ -18,12 +19,12 @@ const FilmDetail = () => {
   let { filmId } = useParams();
   const matches = useMediaQuery('(min-width:800px)');
   
-  const routeChange = () =>{ 
+  const routeChange = (): void => { 
     const path = `/films`; 
     navigate(path);
   };
 
-  const getFilmById = async () => {
+  const getFilmById = async (): Promise<void> => {
     setLoading(true);
     try {
       const omdbByIdAPI = await fetch(`${url}?apikey=${key}&i=${filmId}`);
@@ -38,7 +39,7 @@ const FilmDetail = () => {
     };
   };
 
-  const filterRating = (sourceRating: string) => {
+  const filterRating = (sourceRating: string): string => {
     const filterList = (film.Ratings || []).filter((rate) => rate.Source === sourceRating);
 
     if (filterList && filterList.length > 0) {
