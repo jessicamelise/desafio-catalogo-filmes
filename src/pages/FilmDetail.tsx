@@ -8,6 +8,7 @@ import imdb from '../assets/images/imdb.svg';
 import rotten from '../assets/images/rotten.svg';
 import { apiKey, baseURL } from "../api/omdbAPI";
 import { FilmByIdResponse } from "../models/omdbAPI";
+import { getFavoriteListLocal, setFavoriteListLocal, setItemToFavoriteList } from "../service/favorite/favorite";
 
 const FilmDetail = (): React.ReactElement => {
   const url: string = baseURL;
@@ -18,6 +19,15 @@ const FilmDetail = (): React.ReactElement => {
   const navigate = useNavigate();
   let { filmId } = useParams();
   const matches = useMediaQuery('(min-width:800px)');
+  const favoriteList: string = getFavoriteListLocal();
+  const [favorite, setFavorite] = useState<string>(favoriteList);
+
+  const setItemFavList = (id: string): void => {
+    let list: string[] = setItemToFavoriteList(id, favorite);
+
+    setFavorite(list.join(',') || '');
+    setFavoriteListLocal(list.join(',') || '');
+  };
   
   const routeChange = (): void => { 
     const path = `/films`; 
@@ -164,8 +174,15 @@ const FilmDetail = (): React.ReactElement => {
                       gap="2px" 
                       padding="4px" 
                       alignItems="center"
+                      onClick={() => setItemFavList(filmId || '')}
+                      sx={{ cursor: 'pointer' }}
                     >
-                      <FavoriteBorderIcon sx={{ color: '#7B8C98', fontSize: '16px' }} />
+                      <FavoriteBorderIcon 
+                        sx={{ 
+                          color: favorite.split(',').some((itemId: string) => itemId === film.imdbID) ? '#AA2321' : '#7B8C98',
+                          fontSize: '16px' 
+                        }} 
+                      />
                       <Typography fontSize="12px" sx={{ color: '#7B8C98' }}>
                         Add to favorites
                       </Typography>

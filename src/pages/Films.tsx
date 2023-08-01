@@ -7,6 +7,7 @@ import Logo from "../components/logo/Logo";
 import Header from "../components/header/Header";
 import { apiKey, baseURL } from "../api/omdbAPI";
 import { SearchFilmList, APIResponse } from "../models/omdbAPI";
+import { getFavoriteListLocal, setFavoriteListLocal, setItemToFavoriteList } from "../service/favorite/favorite";
 
 const Films = (): React.ReactElement => {
   const url: string = baseURL;
@@ -17,10 +18,19 @@ const Films = (): React.ReactElement => {
   const [error, setError] = useState<boolean | null>(null);
   const [search, setSearch] = useState<string>('');
   const [filmList, setFilmList] = useState<SearchFilmList[]>([] as SearchFilmList[]);
+  const favoriteList: string = getFavoriteListLocal();
+  const [favorite, setFavorite] = useState<string>(favoriteList);
   const boxAttr = {
     mouseEnter: {
       boxShadow: 'inset 0 0 0 2000px rgba(25, 34, 40, 0.9)',
     },
+  };
+
+  const setItemFavList = (id: string): void => {
+    let list: string[] = setItemToFavoriteList(id, favorite);
+
+    setFavorite(list.join(',') || '');
+    setFavoriteListLocal(list.join(',') || '');
   };
 
   const getSearchFilms = async (): Promise<void> => {
@@ -54,6 +64,7 @@ const Films = (): React.ReactElement => {
 
   const handleKeyDown = (e: React.KeyboardEvent): void => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       getSearchFilms();
     };
   };
@@ -131,12 +142,22 @@ const Films = (): React.ReactElement => {
                     display="flex"
                     flexDirection="column"
                     justifyContent="space-between"
-                    onClick={() => routeChange(film.imdbID)}
+                    onClick={(e: any) => {
+                      if (e.target?.dataset?.testid !== 'FavoriteBorderIcon') {
+                        routeChange(film.imdbID);
+                      }
+                    }}
                   >
                     {isMouseEnter === film.imdbID && (
                       <>
                         <Box alignSelf="flex-end" padding="5px">
-                          <FavoriteBorderIcon sx={{ color: '#FFFFFF' }} />
+                          <FavoriteBorderIcon 
+                            sx={{ 
+                              color: favorite.split(',').some((itemId: string) => itemId === film.imdbID) ? '#AA2321' : '#FFFFFF',
+                              zIndex: '1000'
+                            }} 
+                            onClick={() => setItemFavList(film.imdbID)} 
+                          />
                         </Box>
                         <Box display="flex" flexDirection="column" alignItems="flex-start" padding="5px">
                           <Typography variant="body1" fontWeight="700">{film.Title}</Typography>

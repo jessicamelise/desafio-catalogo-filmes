@@ -20,7 +20,7 @@ O desafio consistem em:
 - Não há layout de telas na versão mobile mas se você fizer sua aplicação responsiva será um ponto positivo (desenvolvimento como mobile first) :heavy_check_mark:
 - Seja fiel ao layout recebido e fique à vontade para fazer melhorias no layout (melhorias aplicadad: tela de login, header com logout, pipeline, deploy :heavy_check_mark:)
 - O projeto conta com muitos pontos de melhorias. Fique a vontade para sugerir. Isso contará pontos no quesito de arquitetura de projeto (sugestão na parte de melhorias desse readme :heavy_check_mark:)
-- Há um botão de "like" (coração) no detalhe do filme. Seria legal se essa informação fosse persistida :x:
+- Há um botão de "like" (coração) no detalhe do filme. Seria legal se essa informação fosse persistida :heavy_check_mark:
 - Testes unitários contarão como ponto positivo :heavy_check_mark:
 - Readme :heavy_check_mark:
 
@@ -35,12 +35,16 @@ Desk:
 ## 3. Implementações Futuras e Melhorias
 
 * Integração com o firebase para fazer o registro e login persistidos;
-* Utilizar o firebase também para setar os filmes favoritos persistidos (antes disso daria para utilizar um json server ou localStorage para armazenar esse dado persistido);
+* Utilizar o firebase também para setar os filmes favoritos persistidos (atualmente está no localStorage);
 * Aprimorar a listagem que atualmente só vem exibido o limit de 10 itens sem usar a paginação, então seria implemenstar essa paginação e mostrar mais itens que retornaram da request, o endpoint da api utilizada pelo que notei não trabalha com o limite, somente com o total de documentos e a página via query string;
 * Melhorar código (quebrar em mais componentes); 
 * Melhorar a cobertura de testes;
 
 <img src="./src/assets/images/image.png" />
+
+Após adição da parte de favoritar baixou a cobertura:
+
+<img src="./src/assets/images/test.PNG" />
 
 ## 2. Montagem do ambiente de desenvolvimento
 
